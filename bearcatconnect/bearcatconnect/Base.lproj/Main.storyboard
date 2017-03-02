@@ -43,6 +43,9 @@
                                 <rect key="frame" x="137" y="457" width="105" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="loginButton"/>
+                                <connections>
+                                    <segue destination="AVI-fq-WqF" kind="show" id="dqE-7X-ROu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2502903080574832" green="0.50883507853403143" blue="0.24202635810296796" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,6 +54,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="237.59999999999999" y="115.59220389805098"/>
+        </scene>
+        <!--Activity Table View Controller-->
+        <scene sceneID="3Yl-db-YYg">
+            <objects>
+                <tableViewController id="AVI-fq-WqF" customClass="ActivityTableViewController" customModule="bearcatconnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="28" sectionHeaderHeight="28" sectionFooterHeight="28" id="9pm-3B-5iS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="Tb3-zk-Wzv">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="What interests you?" id="ATJ-FQ-4m2">
+                                    <barButtonItem key="leftBarButtonItem" title="Skip" id="rT2-j9-0cl"/>
+                                    <barButtonItem key="rightBarButtonItem" title="Next" id="ehF-ne-Lff"/>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="interestCell" textLabel="BZg-t3-Mai" style="IBUITableViewCellStyleDefault" id="3nT-Wx-GcZ">
+                                <rect key="frame" x="0.0" y="72" width="375" height="28"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3nT-Wx-GcZ" id="Et9-b6-may">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="27.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BZg-t3-Mai">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="27.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="AVI-fq-WqF" id="i7D-Cv-iEs"/>
+                            <outlet property="delegate" destination="AVI-fq-WqF" id="wAA-d7-0FN"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityView" destination="9pm-3B-5iS" id="hLp-f2-q6G"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1HV-JG-Zcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1193" y="138"/>
         </scene>
     </scenes>
     <resources>

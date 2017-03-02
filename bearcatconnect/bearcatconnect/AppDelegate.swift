@@ -5,7 +5,8 @@
 //  Created by Verma,Monish on 2/27/17.
 //  Copyright © 2017 Verma,Monish. All rights reserved.
 //
-
+import Parse
+import Bolts
 import UIKit
 
 @UIApplicationMain
@@ -15,7 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Initialize Parse.
+        let configuration = ParseClientConfiguration {
+            $0.applicationId = "DWxHcXjfhaf8ktS0eVuyxxEMCZmLu5rZ3dPO820a"
+            $0.clientKey = "nKHdQ6r5zOsK0khIzDTbY1dBL5aUDXezNUsCTIqa"
+            $0.server = "https://parseapi.back4app.com"
+        }
+        Parse.initialize(with: configuration)
         return true
     }
 
