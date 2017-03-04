@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventTableViewController.swift"
+            timestampString = "510350611.509236"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "EventTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bearcatconnect.EventTableViewController.__deallocating_deinit"
+                  moduleName = "bearcatconnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s528180/Documents/bearcatconnect/bearcatconnect/EventTableViewController.swift"
+                  timestampString = "510350614.807514"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bearcatconnect.EventTableViewController.init (style : __C.UITableViewStyle) -&gt; bearcatconnect.EventTableViewController"
+                  moduleName = "bearcatconnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s528180/Documents/bearcatconnect/bearcatconnect/EventTableViewController.swift"
+                  timestampString = "510350614.85896"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "65">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bearcatconnect.EventTableViewController.__allocating_init (style : __C.UITableViewStyle) -&gt; bearcatconnect.EventTableViewController"
+                  moduleName = "bearcatconnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s528180/Documents/bearcatconnect/bearcatconnect/EventTableViewController.swift"
+                  timestampString = "510350614.86132"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bearcatconnect.EventTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; bearcatconnect.EventTableViewController"
+                  moduleName = "bearcatconnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s528180/Documents/bearcatconnect/bearcatconnect/EventTableViewController.swift"
+                  timestampString = "510350614.863177"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "107">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bearcatconnect.EventTableViewController.__allocating_init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; bearcatconnect.EventTableViewController"
+                  moduleName = "bearcatconnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s528180/Documents/bearcatconnect/bearcatconnect/EventTableViewController.swift"
+                  timestampString = "510350614.864945"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bearcatconnect.EventTableViewController.__allocating_init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;bearcatconnect.EventTableViewController&gt;"
+                  moduleName = "bearcatconnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s528180/Documents/bearcatconnect/bearcatconnect/EventTableViewController.swift"
+                  timestampString = "510350614.86672"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "bearcatconnect.EventTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;bearcatconnect.EventTableViewController&gt;"
+                  moduleName = "bearcatconnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/s528180/Documents/bearcatconnect/bearcatconnect/EventTableViewController.swift"
+                  timestampString = "510350614.869012"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "105">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "bearcatconnect/ActivityTableViewController.swift"
+            timestampString = "510350648.533303"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "ActivityTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
