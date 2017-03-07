@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -228,15 +228,18 @@
                             <outlet property="delegate" destination="YrG-GL-KwQ" id="yOD-w5-Z9H"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="eventsTV" destination="CKE-nK-ozA" id="fJq-nt-K4y"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0I-EW-xcz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-649" y="886"/>
         </scene>
-        <!--View Controller-->
+        <!--Cycling View Controller-->
         <scene sceneID="wJH-Wf-BRE">
             <objects>
-                <viewController id="zVU-2F-DKo" sceneMemberID="viewController">
+                <viewController id="zVU-2F-DKo" customClass="CyclingViewController" customModule="bearcatconnect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rn5-DZ-KiP"/>
                         <viewControllerLayoutGuide type="bottom" id="qI8-zU-Qam"/>
@@ -245,24 +248,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mjw-jT-0vK">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Cycling" id="Ejl-Et-Xqh">
-                                        <leftBarButtonItems>
-                                            <barButtonItem image="Back-40" style="plain" id="bGX-wP-jBf">
-                                                <connections>
-                                                    <segue destination="YrG-GL-KwQ" kind="show" id="YLe-LM-ldF"/>
-                                                </connections>
-                                            </barButtonItem>
-                                            <barButtonItem enabled="NO" image="Cycling" id="KGV-Ls-D0l">
-                                                <inset key="imageInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            </barButtonItem>
-                                        </leftBarButtonItems>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uS-M4-zkx">
                                 <rect key="frame" x="36" y="123" width="96" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -325,13 +310,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Post" image="256"/>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mjw-jT-0vK">
+                                <rect key="frame" x="0.0" y="71" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Cycling" id="Ejl-Et-Xqh">
+                                        <leftBarButtonItems>
+                                            <barButtonItem image="Back-40" style="plain" id="bGX-wP-jBf"/>
+                                            <barButtonItem enabled="NO" image="Cycling" id="KGV-Ls-D0l">
+                                                <inset key="imageInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ogL-Mc-5PO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="685.60000000000002" y="867.61619190404804"/>
+            <point key="canvasLocation" x="686" y="886"/>
         </scene>
     </scenes>
     <resources>
@@ -345,7 +344,4 @@
         <image name="connect" width="1000" height="400"/>
         <image name="loginButton" width="256" height="256"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="YLe-LM-ldF"/>
-    </inferredMetricsTieBreakers>
 </document>

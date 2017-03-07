@@ -20,6 +20,7 @@
 		A215AAA71E67B71600A203BF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A215AA9D1E67B71600A203BF /* StoreKit.framework */; };
 		A215AAA81E67B71600A203BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A215AA9E1E67B71600A203BF /* SystemConfiguration.framework */; };
 		A215AAAA1E67BC4900A203BF /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A215AAA91E67BC4900A203BF /* ActivityTableViewController.swift */; };
+		A21F9B141E6E3B5F0091DD88 /* CyclingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F9B131E6E3B5F0091DD88 /* CyclingViewController.swift */; };
 		A26BBCE61E6B480D00A5327A /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BBCE51E6B480D00A5327A /* EventTableViewController.swift */; };
 		A26BBCE81E6B59CA00A5327A /* eventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BBCE71E6B59CA00A5327A /* eventTableViewCell.swift */; };
 		A2A41B781E6512F6008B4EC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A41B771E6512F6008B4EC0 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		A215AA9D1E67B71600A203BF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A215AA9E1E67B71600A203BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A215AAA91E67BC4900A203BF /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
+		A21F9B131E6E3B5F0091DD88 /* CyclingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyclingViewController.swift; sourceTree = "<group>"; };
 		A26BBCE51E6B480D00A5327A /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewController.swift; path = ../EventTableViewController.swift; sourceTree = "<group>"; };
 		A26BBCE71E6B59CA00A5327A /* eventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTableViewCell.swift; sourceTree = "<group>"; };
 		A2A41B741E6512F6008B4EC0 /* bearcatconnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bearcatconnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,7 @@
 				A215AA8F1E67B62100A203BF /* Frameworks */,
 				A2A41B801E6512F6008B4EC0 /* LaunchScreen.storyboard */,
 				A2A41B831E6512F6008B4EC0 /* Info.plist */,
+				A21F9B131E6E3B5F0091DD88 /* CyclingViewController.swift */,
 			);
 			path = bearcatconnect;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				A26BBCE81E6B59CA00A5327A /* eventTableViewCell.swift in Sources */,
 				A2A41B781E6512F6008B4EC0 /* AppDelegate.swift in Sources */,
 				A26BBCE61E6B480D00A5327A /* EventTableViewController.swift in Sources */,
+				A21F9B141E6E3B5F0091DD88 /* CyclingViewController.swift in Sources */,
 				A215AAAA1E67BC4900A203BF /* ActivityTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

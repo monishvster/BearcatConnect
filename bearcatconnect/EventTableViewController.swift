@@ -11,14 +11,15 @@ import UIKit
 class EventTableViewController: UITableViewController {
     
    // var eventCount:[Int]!
+    @IBOutlet var eventsTV: UITableView!
   
     
     //MARK: Actions
     
     @IBAction func notifyBTN(_ sender: UIButton) {
         print("button clicked")
-        sender.setImage(#imageLiteral(resourceName: "Cycling"), for: [UIControlState.highlighted,UIControlState.selected,UIControlState.normal])
-        self.view.reloadInputViews()
+        sender.setImage(#imageLiteral(resourceName: "Bell Filled-40"), for: [UIControlState.highlighted,UIControlState.selected,UIControlState.normal])
+        eventsTV.reloadData()
         print("changed")
         
         
