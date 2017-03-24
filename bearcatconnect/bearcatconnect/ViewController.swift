@@ -21,6 +21,25 @@ class ViewController: UIViewController {
 
         // Do any additional setup after loading the view, typically from a nib.
     }
+    @IBOutlet weak var usernameTXT: UITextField!
+    @IBOutlet weak var passwordTXT: UITextField!
+    
+    
+    @IBAction func signID(_ sender: Any) {
+        PFUser.logInWithUsername(inBackground: usernameTXT.text!, password: passwordTXT.text!, block: {(user, error) -> Void in
+            if error != nil{
+                print(error!)
+            }
+            else {
+                // Everything went alright here
+               print("login success")
+                
+            }
+        })
+        
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
