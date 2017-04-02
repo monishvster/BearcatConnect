@@ -13,7 +13,7 @@ class CyclingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CyclingViewController.dismiss as (CyclingViewController) -> () -> ()))
+       // self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CyclingViewController.dismiss as (CyclingViewController) -> () -> ()))
         // Do any additional setup after loading the view.
     }
 
@@ -26,9 +26,7 @@ class CyclingViewController: UIViewController {
     
     // MARK: - Navigation
 
-    func dismiss() {
-        self.dismiss(animated: true, completion: nil)
-    }
+    
     /*
      
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 class SignupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(SignupViewController.dismiss as (SignupViewController) -> () -> ()))
+       
         // Do any additional setup after loading the view.
     }
 
@@ -21,13 +23,46 @@ class SignupViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var firstname: UITextField!
+    @IBOutlet weak var lastname: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var confirm: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
+   
+    @IBAction func signUp(_ sender: Any) {
+        let fname = firstname.text
+        let lname = lastname.text
+        let user = PFUser()
+        user.username = username.text
+        if confirm.text == password.text {
+        user.password = confirm.text
+            
+            user.setValue(fname, forKey: "fname")
+            user.setValue(lname, forKey: "lname")
+            user.signUpInBackground(block: { (success, error) -> Void in
+            })
+            errorLabel.text = ""
+            self.dismiss(animated: true, completion: {})
+        }
+        else {
+            errorLabel.text = "Passwords do not match"
+            confirm.text = ""
+            password.text = ""
+        }
+        
+        
+        
+    }
+    
 
+    @IBAction func goBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: {})
+    }
     
     // MARK: - Navigation
      
-     func dismiss() {
-     self.dismiss(animated: true, completion: nil)
-     }
+     
 
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation

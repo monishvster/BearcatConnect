@@ -17,14 +17,10 @@ class EventTableViewController: UITableViewController {
     //MARK: Actions
     
     @IBAction func notifyBTN(_ sender: UIButton) {
-        print("button clicked")
-        sender.setImage(#imageLiteral(resourceName: "Bell Filled-40"), for: [UIControlState.highlighted,UIControlState.selected,UIControlState.normal])
-        eventsTV.reloadData()
-        print("changed")
-        
-        
-        //do some more stuff
+       //do some more stuff
     }
+    
+    
     
     @IBAction func favouriteBTN(_ sender: UIButton) {
     }
@@ -82,6 +78,7 @@ class EventTableViewController: UITableViewController {
     {
         return 100.0;//Choose your custom row height
     }
+    
     
     /*
     // Override to support conditional editing of the table view.

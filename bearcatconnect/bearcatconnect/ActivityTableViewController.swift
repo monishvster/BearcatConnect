@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 class ActivityTableViewController: UITableViewController {
 
@@ -30,6 +32,18 @@ class ActivityTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    @IBAction func logout(_ sender: Any) {
+        PFUser.logOut()
+        let login = storyboard?.instantiateViewController(withIdentifier: "loginView")
+        self.present(login!, animated: true, completion: {})
+        
+    }
+    
+    @IBAction func next(_ sender: Any) {
+        self.performSegue(withIdentifier: "nextView", sender: self)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,7 +73,7 @@ class ActivityTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Row is \(indexPath.row)")
+        
         let cell = tableView.cellForRow(at: indexPath)
         
         if (cell?.accessoryType == UITableViewCellAccessoryType.checkmark){
