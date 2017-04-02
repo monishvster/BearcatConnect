@@ -11,7 +11,13 @@ iOS Spring 2017 project
 ### How do I get set up? ###
 
 * Summary of set up
+Back4App login details:
+Username: s528180@mail.nwmissouri.edu
+Password: bearcatconnect
 * Configuration
+applicationId = Wkvil8nJp0fsHr24NjB5ACl8QVk0IkX5GlJOMt0H
+clientKey = K4jimrqayeXtw1KxO1WB0JmIznneAuuQGrKCAs6I
+server = https://parseapi.back4app.com
 * Dependencies
 * Database configuration
 * How to run tests
