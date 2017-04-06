@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+
 
 class CyclingViewController: UIViewController {
 
@@ -21,8 +23,26 @@ class CyclingViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBOutlet weak var datePicker: UIDatePicker!
     
+    @IBOutlet weak var titleTXT: UITextField!
 
+    @IBOutlet weak var descriptionTXT: UITextView!
+    
+    
+    @IBAction func createPost(_ sender: UIButton) {
+        let createPost = PFObject(className: "CyclingPost")
+        createPost["sid"] = 1
+        createPost["title"] = titleTXT.text!
+        let locale = NSTimeZone.init(abbreviation: "CDT")
+        NSTimeZone.default = locale as! TimeZone
+        
+        print(datePicker.date.description)
+        createPost["eventDate"] = datePicker.date
+        
+       // createPost["eventDate"] = datePicker.
+        
+    }
     
     // MARK: - Navigation
 

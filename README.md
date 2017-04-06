@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-iOS Spring 2017 project 
+iOS Spring 2017 project
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
@@ -12,11 +12,11 @@ iOS Spring 2017 project
 
 * Summary of set up  
 Back4App login details:  
-Username: s528180@mail.nwmissouri.edu  
-Password: bearcatconnect  
+Username: monish.vster@gmail.com  
+Password: M@verma16  
 * Configuration  
-applicationId = Wkvil8nJp0fsHr24NjB5ACl8QVk0IkX5GlJOMt0H  
-clientKey = K4jimrqayeXtw1KxO1WB0JmIznneAuuQGrKCAs6I  
+applicationId = DWxHcXjfhaf8ktS0eVuyxxEMCZmLu5rZ3dPO820a  
+clientKey = nKHdQ6r5zOsK0khIzDTbY1dBL5aUDXezNUsCTIqa  
 server = https://parseapi.back4app.com  
 * Dependencies
 * Database configuration
