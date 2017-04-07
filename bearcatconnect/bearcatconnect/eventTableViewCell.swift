@@ -14,9 +14,10 @@ class eventTableViewCell: UITableViewCell {
     //MARK: Outlets
     
     @IBOutlet weak var notifyBTN: UIButton!
-    @IBOutlet weak var favoriteBTN: UIButton!
+    
     @IBOutlet weak var replyBTN: UIButton!
     
+    @IBOutlet weak var likeBTN: UIButton!
     
     @IBOutlet weak var eventsView: UIView!
     @IBOutlet weak var countLBL: UILabel!

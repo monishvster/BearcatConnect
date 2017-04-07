@@ -34,13 +34,25 @@ class CyclingViewController: UIViewController {
         let createPost = PFObject(className: "CyclingPost")
         createPost["sid"] = 1
         createPost["title"] = titleTXT.text!
-        let locale = NSTimeZone.init(abbreviation: "CDT")
-        NSTimeZone.default = locale as! TimeZone
+                createPost["eventDate"] = datePicker.date
+        let date = datePicker.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd hh:mm a"
+        let dateString = dateFormatter.string(from: date)
+        print("checking date \(dateString)")
         
-        print(datePicker.date.description)
-        createPost["eventDate"] = datePicker.date
         
-       // createPost["eventDate"] = datePicker.
+        createPost["eventDate"] = date
+        createPost["description"] = descriptionTXT.text
+        
+        createPost.saveInBackground(block: {(user, error) -> Void in
+            if error != nil{
+            print("success")
+            }
+            else {
+            print(error)
+            }
+            })
         
     }
     

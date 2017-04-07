@@ -12,22 +12,7 @@ class EventTableViewController: UITableViewController {
     
    // var eventCount:[Int]!
     @IBOutlet var eventsTV: UITableView!
-  
-    
-    //MARK: Actions
-    
-    @IBAction func notifyBTN(_ sender: UIButton) {
-       //do some more stuff
-    }
-    
-    
-    
-    @IBAction func favouriteBTN(_ sender: UIButton) {
-    }
-    
-    
-    @IBAction func replyBTN(_ sender: UIButton) {
-    }
+
     
     
     override func viewDidLoad() {
@@ -55,12 +40,37 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 2
     }
+    var commentText = ["a","b","c"]
 
+    func replyClicked(sender:UIButton) {
+        
+        let buttonRow = sender.tag
+        print("reply button clicked \(buttonRow)")
+        tableView.beginUpdates()
+        tableView.insertRows(at: [IndexPath(row: commentText.count-1, section: 0)], with: .automatic)
+        tableView.endUpdates()
+        
+    }
+    
+    func likeClicked(sender:UIButton) {
+        
+        let buttonRow = sender.tag
+        print("button clicked \(buttonRow)")
+        sender.setImage(#imageLiteral(resourceName: "Like Filled-40"), for: UIControlState.normal)
+        
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "eventView", for: indexPath)
+       let cell = tableView.dequeueReusableCell(withIdentifier: "eventView", for: indexPath) as! eventTableViewCell
+        cell.likeBTN.tag = indexPath.row
+        
+        cell.likeBTN.addTarget(self,action:#selector(likeClicked(sender:)), for: .touchUpInside)
+        
+        
+        cell.replyBTN.addTarget(self, action: #selector(replyClicked(sender:)), for: .touchUpInside)
+        
         
     
         
