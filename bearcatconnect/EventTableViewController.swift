@@ -13,17 +13,13 @@ class EventTableViewController: UITableViewController {
    // var eventCount:[Int]!
     @IBOutlet var eventsTV: UITableView!
 
-    
+    var posts:[Int] = [0]
+    let titleArray = ["a","b","c"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // eventCount = [1,2]
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+       
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,16 +36,19 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return posts.count
     }
-    var commentText = ["a","b","c"]
+    
+    var count = 0
 
     func replyClicked(sender:UIButton) {
         
         let buttonRow = sender.tag
         print("reply button clicked \(buttonRow)")
+        count = count + 1
+        posts.append(count)
         tableView.beginUpdates()
-        tableView.insertRows(at: [IndexPath(row: commentText.count-1, section: 0)], with: .automatic)
+        tableView.insertRows(at: [IndexPath(row: count, section: 0)], with: .automatic)
         tableView.endUpdates()
         
     }
@@ -58,36 +57,175 @@ class EventTableViewController: UITableViewController {
         
         let buttonRow = sender.tag
         print("button clicked \(buttonRow)")
-        sender.setImage(#imageLiteral(resourceName: "Like Filled-40"), for: UIControlState.normal)
+        sender.setImage(#imageLiteral(resourceName: "Like Filled-40"), for: .normal)
         
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCell(withIdentifier: "eventView", for: indexPath) as! eventTableViewCell
-        cell.likeBTN.tag = indexPath.row
+       //let cell = tableView.dequeueReusableCell(withIdentifier: "eventView", for: indexPath) as! eventTableViewCell
         
-        cell.likeBTN.addTarget(self,action:#selector(likeClicked(sender:)), for: .touchUpInside)
+        //let cellHeight = tableView(self.tableView, heightForRowAt: IndexPath(row: indexPath.row, section: indexPath.section))
+        if(indexPath.row == 0) {
+            let cell = CustomCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
         
+        cell.postCount.text = "1"
+        cell.postTitle.text = "20 mile trail"
+        cell.eventTime.text = "10:00 pm 23rd Jan"
         
-        cell.replyBTN.addTarget(self, action: #selector(replyClicked(sender:)), for: .touchUpInside)
-        
-        
-    
-        
-       // countLBL.text? = String(eventCount[indexPath.row])
-       // eventNameLBL.text? = "20 mile trail"
-      //  eventDateLBL.text? = "20th, Feb"
-      //  eventTimeLBL.text? = "10:00 AM"
+        cell.likeButton.addTarget(self, action:#selector(likeClicked(sender:)), for: .touchUpInside)
+        cell.replyButton.addTarget(self, action: #selector(replyClicked(sender:)), for: .touchUpInside)
+       
         
         
 
         return cell
+        }
+        else if(indexPath.row == 1) {
+            let cell = CommentCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
+            return cell
+        }
+        else {
+            let cell = PostCommentCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
+            return cell
+        }
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 100.0;//Choose your custom row height
+        return 100;//Choose your custom row height
     }
+    
+    
+    //custom cell programmatically
+    class CustomCell: UITableViewCell {
+        
+        var postCount: UILabel!
+        var postTitle: UILabel!
+        var eventTime: UILabel!
+        var notifyButton: UIButton!
+        var likeButton: UIButton!
+        var replyButton: UIButton!
+        
+        
+        init(frame: CGRect, title: String) {
+            super.init(style: UITableViewCellStyle.default, reuseIdentifier: "eventView")
+            
+            print("width: \(self.frame.width)")
+            print("height: \(self.frame.height)")
+            //post count label
+            postCount = UILabel(frame: CGRect(x: 10,y: 10,width: 20 ,height: 20))
+            postCount.textColor = UIColor.black
+            
+            //post title label
+            postTitle = UILabel(frame: CGRect(x: 80 ,y: 10,width: 150 ,height: 20))
+            postTitle.textColor = UIColor.black
+            
+            //event time label
+            eventTime = UILabel(frame: CGRect(x: 80 ,y: 50,width: 150 ,height: 20))
+            eventTime.textColor = UIColor.black
+            
+            //notify button
+            notifyButton = UIButton(frame: CGRect(x: 5, y: 50, width: 50, height: 50))
+            notifyButton.setImage(#imageLiteral(resourceName: "Bell-40"), for: .normal)
+            
+            //like button
+            likeButton = UIButton(frame: CGRect(x: 350, y: 5, width: 50, height: 50))
+            likeButton.setImage(#imageLiteral(resourceName: "Like-40"), for: .normal)
+            
+            //reply button
+            replyButton = UIButton(frame: CGRect(x: 350, y: 50, width: 50, height: 50))
+            replyButton.setImage(#imageLiteral(resourceName: "Reply Arrow-40"), for: .normal)
+            
+            //adding to subview
+           
+            addSubview(postCount)
+            addSubview(postTitle)
+            addSubview(eventTime)
+            addSubview(notifyButton)
+            addSubview(likeButton)
+            addSubview(replyButton)
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+        }
+    }
+    
+    class CommentCell: UITableViewCell {
+        
+        var commentText: UITextField!
+        
+        
+        
+        
+        init(frame: CGRect, title: String) {
+            super.init(style: UITableViewCellStyle.default, reuseIdentifier: "commentView")
+            
+            print("width: \(self.frame.width)")
+            print("height: \(self.frame.height)")
+            //post count label
+            commentText = UITextField(frame: CGRect(x: 10,y: 10,width: 370 ,height: 80))
+            commentText.layer.borderWidth = 2
+            commentText.layer.borderColor = UIColor.black.cgColor
+            
+            //adding to subview
+            
+            addSubview(commentText)
+            
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+        }
+    }
+    
+    class PostCommentCell: UITableViewCell {
+        
+        var commentText: UITextField!
+        var postCommentButton: UIButton!
+        
+        
+        
+        init(frame: CGRect, title: String) {
+            super.init(style: UITableViewCellStyle.default, reuseIdentifier: "commentView")
+            
+            print("width: \(self.frame.width)")
+            print("height: \(self.frame.height)")
+            //post count label
+            commentText = UITextField(frame: CGRect(x: 10,y: 10,width: 280 ,height: 80))
+            commentText.layer.borderWidth = 2
+            commentText.layer.borderColor = UIColor.black.cgColor
+            
+            postCommentButton = UIButton(frame: CGRect(x: 300, y: 40, width: 50, height: 50))
+            postCommentButton.setTitle("Post", for: .normal)
+            postCommentButton.setTitleColor(UIColor.black, for: .normal)
+            //adding to subview
+            
+            addSubview(commentText)
+            addSubview(postCommentButton)
+            
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+        }
+    }
+
+
     
     
     /*
