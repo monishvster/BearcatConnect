@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.applicationId = "DWxHcXjfhaf8ktS0eVuyxxEMCZmLu5rZ3dPO820a"
             $0.clientKey = "nKHdQ6r5zOsK0khIzDTbY1dBL5aUDXezNUsCTIqa"
             $0.server = "https://parseapi.back4app.com"
+            $0.isLocalDatastoreEnabled = true
         }
+        Parse.enableLocalDatastore()
         Parse.initialize(with: configuration)
         return true
     }

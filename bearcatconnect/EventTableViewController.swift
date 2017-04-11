@@ -15,6 +15,7 @@ class EventTableViewController: UITableViewController {
 
     var posts:[Int] = [0]
     let titleArray = ["a","b","c"]
+    var commentArray:[String] = [""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class EventTableViewController: UITableViewController {
         
         let buttonRow = sender.tag
         print("reply button clicked \(buttonRow)")
-        count = count + 1
+       count = count + 1
         posts.append(count)
         tableView.beginUpdates()
         tableView.insertRows(at: [IndexPath(row: count, section: 0)], with: .automatic)
@@ -59,6 +60,23 @@ class EventTableViewController: UITableViewController {
         print("button clicked \(buttonRow)")
         sender.setImage(#imageLiteral(resourceName: "Like Filled-40"), for: .normal)
         
+    }
+    var postcount = 1
+    
+    func postComment(sender:UIButton) {
+        print("post comment clicked")
+        print("comment array \(commentArray)")
+//        postcount = postcount + 1
+        
+       
+      
+        posts.append(postcount)
+        tableView.beginUpdates()
+       
+//        tableView.insertRows(at: [IndexPath(row: postcount - 1, section: 0)], with: .automatic)
+        tableView.insertRows(at: [IndexPath(row: postcount, section: 0)], with: .automatic)
+        tableView.endUpdates()
+       
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,23 +92,23 @@ class EventTableViewController: UITableViewController {
         
         cell.likeButton.addTarget(self, action:#selector(likeClicked(sender:)), for: .touchUpInside)
         cell.replyButton.addTarget(self, action: #selector(replyClicked(sender:)), for: .touchUpInside)
-       
-        
-        
 
         return cell
         }
         else if(indexPath.row == 1) {
             let cell = CommentCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
+            cell.commentText.text = commentArray[indexPath.row-1]
             return cell
         }
+            
         else {
             let cell = PostCommentCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
+            commentArray.append(cell.commentText.text!)
+            cell.postCommentButton.addTarget(self, action: #selector(postComment(sender:)), for: .touchUpInside)
             return cell
         }
+        
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
@@ -159,7 +177,7 @@ class EventTableViewController: UITableViewController {
     
     class CommentCell: UITableViewCell {
         
-        var commentText: UITextField!
+        var commentText: UILabel!
         
         
         
@@ -170,7 +188,7 @@ class EventTableViewController: UITableViewController {
             print("width: \(self.frame.width)")
             print("height: \(self.frame.height)")
             //post count label
-            commentText = UITextField(frame: CGRect(x: 10,y: 10,width: 370 ,height: 80))
+            commentText = UILabel(frame: CGRect(x: 10,y: 10,width: 370 ,height: 80))
             commentText.layer.borderWidth = 2
             commentText.layer.borderColor = UIColor.black.cgColor
             
@@ -197,7 +215,7 @@ class EventTableViewController: UITableViewController {
         
         
         init(frame: CGRect, title: String) {
-            super.init(style: UITableViewCellStyle.default, reuseIdentifier: "commentView")
+            super.init(style: UITableViewCellStyle.default, reuseIdentifier: "postCommentView")
             
             print("width: \(self.frame.width)")
             print("height: \(self.frame.height)")

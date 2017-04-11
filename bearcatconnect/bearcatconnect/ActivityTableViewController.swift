@@ -25,11 +25,29 @@ class ActivityTableViewController: UITableViewController {
         activityView.dataSource = self
         activityName = ["Cycling","Trekking","Literature","Music","Mathematics","Programming","Photography"]
         activityImages = [#imageLiteral(resourceName: "Cycling"),#imageLiteral(resourceName: "Trekking"),#imageLiteral(resourceName: "Literature"),#imageLiteral(resourceName: "Music"),#imageLiteral(resourceName: "Mathematics"),#imageLiteral(resourceName: "Code"),#imageLiteral(resourceName: "Camera")]
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (PFUser.current() == nil) {
+            DispatchQueue.main.async(execute: {
+                print("async")
+                let loginViewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginView")
+                self.present(loginViewController, animated: true, completion: nil)
+                
+            })
+                    }
+        else{
+            print("logged in")
+        }
     }
 
     @IBAction func logout(_ sender: Any) {
