@@ -11,7 +11,8 @@ import Parse
 
 
 class CyclingViewController: UIViewController {
-
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,11 +31,23 @@ class CyclingViewController: UIViewController {
     @IBOutlet weak var descriptionTXT: UITextView!
     
     
+
     @IBAction func createPost(_ sender: UIButton) {
+        
+       
+        
+        if(titleTXT.text == "" || descriptionTXT.text == "") {
+            let refreshAlert = UIAlertController(title: "Error  ", message: "Title/Description is missing", preferredStyle: UIAlertControllerStyle.alert)
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+               
+            }))
+            self.present(refreshAlert, animated: true, completion: nil)
+        }
+        else {
+        
         let createPost = PFObject(className: "CyclingPost")
-        createPost["sid"] = 1
         createPost["title"] = titleTXT.text!
-                createPost["eventDate"] = datePicker.date
+        createPost["eventDate"] = datePicker.date
         let date = datePicker.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd hh:mm a"
@@ -47,12 +60,20 @@ class CyclingViewController: UIViewController {
         
         createPost.saveInBackground(block: {(user, error) -> Void in
             if error != nil{
-            print("success")
+            print("error occured")
+                
             }
             else {
-            print(error)
-            }
+                let refreshAlert = UIAlertController(title: "Success", message: "Event Created Successfully", preferredStyle: UIAlertControllerStyle.alert)
+                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                    self.titleTXT.text = ""
+                    self.descriptionTXT.text = ""
+                    self.datePicker.setDate(NSDate.init() as Date, animated: true)
+                }))
+                self.present(refreshAlert, animated: true, completion: nil)
+                        }
             })
+        }
         
     }
     

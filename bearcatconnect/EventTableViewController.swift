@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class EventTableViewController: UITableViewController {
     
    // var eventCount:[Int]!
+    var cyclePost:[PFObject] = []
+    
+    
     @IBOutlet var eventsTV: UITableView!
 
     var posts:[Int] = [0]
@@ -19,8 +23,20 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         let query = PFQuery(className:"CyclingPost")
+        query.findObjectsInBackground(block: { (objects : [PFObject]?, error: Error?) -> Void in
+            
+            if error == nil {
+                
+                self.cyclePost = objects!
+                // Do something with the found objects
+                self.eventsTV.reloadData()
+            } else {
+                // Log details of the failure
+               print("error occured")
+            }
+        })
         
-       
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +53,7 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return posts.count
+        return cyclePost.count
     }
     
     var count = 0
@@ -54,11 +70,16 @@ class EventTableViewController: UITableViewController {
         
     }
     
+    var likeCount = 0
+    
     func likeClicked(sender:UIButton) {
-        
-        let buttonRow = sender.tag
-        print("button clicked \(buttonRow)")
-        sender.setImage(#imageLiteral(resourceName: "Like Filled-40"), for: .normal)
+        likeCount = likeCount + 1
+        if(likeCount%2 != 0) {
+       sender.setImage(#imageLiteral(resourceName: "Like Filled-40"), for: .normal)
+        }
+        else {
+            sender.setImage(#imageLiteral(resourceName: "Like-40"), for: .normal)
+        }
         
     }
     var postcount = 1
@@ -80,15 +101,15 @@ class EventTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       //let cell = tableView.dequeueReusableCell(withIdentifier: "eventView", for: indexPath) as! eventTableViewCell
+       
         
-        //let cellHeight = tableView(self.tableView, heightForRowAt: IndexPath(row: indexPath.row, section: indexPath.section))
         if(indexPath.row == 0) {
+            let post:PFObject = cyclePost[(indexPath as NSIndexPath).row]
             let cell = CustomCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
         
-        cell.postCount.text = "1"
-        cell.postTitle.text = "20 mile trail"
-        cell.eventTime.text = "10:00 pm 23rd Jan"
+        
+        cell.postTitle.text = post["title"] as! String!
+        cell.eventTime.text = post["eventDate"] as! String!
         
         cell.likeButton.addTarget(self, action:#selector(likeClicked(sender:)), for: .touchUpInside)
         cell.replyButton.addTarget(self, action: #selector(replyClicked(sender:)), for: .touchUpInside)
@@ -104,6 +125,7 @@ class EventTableViewController: UITableViewController {
         else {
             let cell = PostCommentCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
             commentArray.append(cell.commentText.text!)
+            print("comment array inside cell \(commentArray)")
             cell.postCommentButton.addTarget(self, action: #selector(postComment(sender:)), for: .touchUpInside)
             return cell
         }
@@ -119,7 +141,6 @@ class EventTableViewController: UITableViewController {
     //custom cell programmatically
     class CustomCell: UITableViewCell {
         
-        var postCount: UILabel!
         var postTitle: UILabel!
         var eventTime: UILabel!
         var notifyButton: UIButton!
@@ -130,15 +151,10 @@ class EventTableViewController: UITableViewController {
         init(frame: CGRect, title: String) {
             super.init(style: UITableViewCellStyle.default, reuseIdentifier: "eventView")
             
-            print("width: \(self.frame.width)")
-            print("height: \(self.frame.height)")
-            //post count label
-            postCount = UILabel(frame: CGRect(x: 10,y: 10,width: 20 ,height: 20))
-            postCount.textColor = UIColor.black
             
             //post title label
             postTitle = UILabel(frame: CGRect(x: 80 ,y: 10,width: 150 ,height: 20))
-            postTitle.textColor = UIColor.black
+            postTitle.textColor = UIColor.blue
             
             //event time label
             eventTime = UILabel(frame: CGRect(x: 80 ,y: 50,width: 150 ,height: 20))
@@ -149,16 +165,16 @@ class EventTableViewController: UITableViewController {
             notifyButton.setImage(#imageLiteral(resourceName: "Bell-40"), for: .normal)
             
             //like button
-            likeButton = UIButton(frame: CGRect(x: 350, y: 5, width: 50, height: 50))
+            likeButton = UIButton(frame: CGRect(x: 300, y: 5, width: 50, height: 50))
             likeButton.setImage(#imageLiteral(resourceName: "Like-40"), for: .normal)
             
             //reply button
-            replyButton = UIButton(frame: CGRect(x: 350, y: 50, width: 50, height: 50))
+            replyButton = UIButton(frame: CGRect(x: 300, y: 50, width: 50, height: 50))
             replyButton.setImage(#imageLiteral(resourceName: "Reply Arrow-40"), for: .normal)
             
             //adding to subview
            
-            addSubview(postCount)
+            
             addSubview(postTitle)
             addSubview(eventTime)
             addSubview(notifyButton)
@@ -185,10 +201,9 @@ class EventTableViewController: UITableViewController {
         init(frame: CGRect, title: String) {
             super.init(style: UITableViewCellStyle.default, reuseIdentifier: "commentView")
             
-            print("width: \(self.frame.width)")
-            print("height: \(self.frame.height)")
+           
             //post count label
-            commentText = UILabel(frame: CGRect(x: 10,y: 10,width: 370 ,height: 80))
+            commentText = UILabel(frame: CGRect(x: 10,y: 10,width: 320 ,height: 80))
             commentText.layer.borderWidth = 2
             commentText.layer.borderColor = UIColor.black.cgColor
             
@@ -217,8 +232,6 @@ class EventTableViewController: UITableViewController {
         init(frame: CGRect, title: String) {
             super.init(style: UITableViewCellStyle.default, reuseIdentifier: "postCommentView")
             
-            print("width: \(self.frame.width)")
-            print("height: \(self.frame.height)")
             //post count label
             commentText = UITextField(frame: CGRect(x: 10,y: 10,width: 280 ,height: 80))
             commentText.layer.borderWidth = 2
