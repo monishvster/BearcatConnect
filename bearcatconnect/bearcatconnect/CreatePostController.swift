@@ -10,12 +10,41 @@ import UIKit
 import Parse
 
 
-class CyclingViewController: UIViewController {
+class CreatePostController: UIViewController {
     
+    var createPost:PFObject! = nil
+    var activityModel:ActivityModel!
+    var selectedActivity:String = ""
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        activityModel = (UIApplication.shared.delegate as! AppDelegate).activityModel
+        print("selected row here \(activityModel.activity)")
+        if activityModel.activity == "Cycling" {
+            selectedActivity = "CyclingPost"
+        }
+        else if activityModel.activity == "Trekking" {
+            selectedActivity = "TrekkingPost"
+        }
+        else if activityModel.activity == "Literature" {
+            selectedActivity = "LiteraturePost"
+        }
+        else if activityModel.activity == "Music" {
+            selectedActivity = "MusicPost"
+        }
+        else if activityModel.activity == "Mathematics" {
+            selectedActivity = "MathsPost"
+        }
+        else if activityModel.activity == "Programming" {
+            selectedActivity = "ProgrammingPost"
+        }
+        else if activityModel.activity == "Photography" {
+            selectedActivity = "PhotographyPost"
+        }
+        
+        createPost = PFObject(className: selectedActivity)
+        
        // self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(CyclingViewController.dismiss as (CyclingViewController) -> () -> ()))
         // Do any additional setup after loading the view.
     }
@@ -44,8 +73,8 @@ class CyclingViewController: UIViewController {
             self.present(refreshAlert, animated: true, completion: nil)
         }
         else {
-        
-        let createPost = PFObject(className: "CyclingPost")
+            
+       
         createPost["title"] = titleTXT.text!
         createPost["eventDate"] = datePicker.date
         let date = datePicker.date

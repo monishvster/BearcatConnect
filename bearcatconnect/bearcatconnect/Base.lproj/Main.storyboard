@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -188,7 +187,7 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="interestCell" textLabel="BZg-t3-Mai" style="IBUITableViewCellStyleDefault" id="3nT-Wx-GcZ">
                                 <rect key="frame" x="0.0" y="28" width="375" height="28"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3nT-Wx-GcZ" id="Et9-b6-may">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" tableViewCell="3nT-Wx-GcZ" id="Et9-b6-may">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="27"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -201,6 +200,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="g0C-eG-Rjj" kind="show" id="Xrd-3t-2wC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -215,16 +217,10 @@
                                 <action selector="logout:" destination="AVI-fq-WqF" id="Lmr-tE-piZ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="Uw2-cP-Y06">
-                            <connections>
-                                <action selector="next:" destination="AVI-fq-WqF" id="nya-NQ-EvR"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityView" destination="9pm-3B-5iS" id="hLp-f2-q6G"/>
-                        <segue destination="g0C-eG-Rjj" kind="show" identifier="nextView" id="TfI-XF-hST"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1HV-JG-Zcm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,7 +241,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="179"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="events" tableViewCell="AlW-cU-3sT" id="mGM-hq-4NZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -256,7 +252,7 @@
                                 <rect key="frame" x="0.0" y="207" width="375" height="179"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IEh-uG-iRa" id="DdX-Wr-6xJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -264,7 +260,7 @@
                                 <rect key="frame" x="0.0" y="386" width="375" height="179"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3QX-Lw-VsQ" id="8uA-Et-4b3">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -274,17 +270,12 @@
                             <outlet property="delegate" destination="YrG-GL-KwQ" id="yOD-w5-Z9H"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cycling" id="E01-JO-kiU">
-                        <leftBarButtonItems>
-                            <barButtonItem image="Back-40" id="mKX-lG-rv7">
-                                <connections>
-                                    <segue destination="AVI-fq-WqF" kind="show" id="HDi-GT-CkS"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem enabled="NO" image="Cycling" id="g3G-Wn-1Cu">
-                                <inset key="imageInsets" minX="4" minY="8" maxX="0.0" maxY="0.0"/>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                    <navigationItem key="navigationItem" id="E01-JO-kiU">
+                        <barButtonItem key="leftBarButtonItem" image="Back-40" id="mKX-lG-rv7">
+                            <connections>
+                                <segue destination="AVI-fq-WqF" kind="show" id="HDi-GT-CkS"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="PcB-Qb-yfU">
                             <inset key="imageInsets" minX="4" minY="10" maxX="0.0" maxY="0.0"/>
                             <connections>
@@ -303,7 +294,7 @@
         <!--Add Post-->
         <scene sceneID="wJH-Wf-BRE">
             <objects>
-                <viewController id="zVU-2F-DKo" customClass="CyclingViewController" customModule="bearcatconnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zVU-2F-DKo" customClass="CreatePostController" customModule="bearcatconnect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rn5-DZ-KiP"/>
                         <viewControllerLayoutGuide type="bottom" id="qI8-zU-Qam"/>
@@ -448,7 +439,6 @@
     <resources>
         <image name="256" width="256" height="256"/>
         <image name="Back-40" width="40" height="40"/>
-        <image name="Cycling" width="40" height="40"/>
         <image name="Northwest_Missouri_State_Bearcats_logo" width="951" height="1024"/>
         <image name="connect" width="1000" height="400"/>
         <image name="joinUs" width="477" height="247"/>
@@ -456,7 +446,7 @@
         <image name="signup" width="344" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eFU-mt-ytq"/>
         <segue reference="HNV-ak-Vq0"/>
+        <segue reference="HDi-GT-CkS"/>
     </inferredMetricsTieBreakers>
 </document>

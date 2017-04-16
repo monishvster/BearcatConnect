@@ -13,9 +13,12 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var activityModel:ActivityModel!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //Initialize Model
+        activityModel = ActivityModel(activity: "")
+        
         // Initialize Parse.
         let configuration = ParseClientConfiguration {
             $0.applicationId = "DWxHcXjfhaf8ktS0eVuyxxEMCZmLu5rZ3dPO820a"
@@ -25,6 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.enableLocalDatastore()
         Parse.initialize(with: configuration)
+        
+        //implementing notifications
+        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
         return true
     }
 

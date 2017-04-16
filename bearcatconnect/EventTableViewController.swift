@@ -11,9 +11,14 @@ import Parse
 
 class EventTableViewController: UITableViewController {
     
-   // var eventCount:[Int]!
-    var cyclePost:[PFObject] = []
-    
+   
+    var query:PFQuery! = nil
+    var activityPost:[PFObject] = []
+    var activityModel:ActivityModel!
+    var selectedActivity:String = ""
+    var selectedActivityTitle:String = ""
+    var selectedActivityImage:UIImage! = nil
+    var objectId:[String] = []
     
     @IBOutlet var eventsTV: UITableView!
 
@@ -23,21 +28,64 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         let query = PFQuery(className:"CyclingPost")
+        //initialize model
+        activityModel = (UIApplication.shared.delegate as! AppDelegate).activityModel
+        if activityModel.activity == "Cycling" {
+            selectedActivity = "CyclingPost"
+            self.navigationItem.title = "Cycling"
+        }
+        else if activityModel.activity == "Trekking" {
+            selectedActivity = "TrekkingPost"
+            self.navigationItem.title = "Trekking"
+        }
+        else if activityModel.activity == "Literature" {
+            selectedActivity = "LiteraturePost"
+            self.navigationItem.title = "Literature"
+        }
+        else if activityModel.activity == "Music" {
+            selectedActivity = "MusicPost"
+            self.navigationItem.title = "Music"
+        }
+        else if activityModel.activity == "Mathematics" {
+            selectedActivity = "MathsPost"
+            self.navigationItem.title = "Mathematics"
+        }
+        else if activityModel.activity == "Programming" {
+            selectedActivity = "ProgrammingPost"
+            self.navigationItem.title = "Programming"
+        }
+        else if activityModel.activity == "Photography" {
+            selectedActivity = "PhotographyPost"
+            self.navigationItem.title = "Photography"
+        }
+        
+        query = PFQuery(className:selectedActivity)
         query.findObjectsInBackground(block: { (objects : [PFObject]?, error: Error?) -> Void in
             
             if error == nil {
                 
-                self.cyclePost = objects!
-                // Do something with the found objects
+                self.activityPost = objects!
+                if let objects = objects as [PFObject]! {
+                    for oneObj in objects {
+                        self.objectId.append(oneObj.objectId!)
+                    }
+                }
+                
                 self.eventsTV.reloadData()
+                
             } else {
                 // Log details of the failure
-               print("error occured")
+                print("error occured")
             }
         })
         
+        
+        
+        
+        
     }
+    
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -53,33 +101,70 @@ class EventTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return cyclePost.count
+        return activityPost.count
     }
     
     var count = 0
 
     func replyClicked(sender:UIButton) {
         
-        let buttonRow = sender.tag
-        print("reply button clicked \(buttonRow)")
-       count = count + 1
-        posts.append(count)
+        
+        print("reply button clicked \(row_number)")
+        count = count + 1
+        posts.append(row_number.count)
         tableView.beginUpdates()
-        tableView.insertRows(at: [IndexPath(row: count, section: 0)], with: .automatic)
+        
+        tableView.insertRows(at: [IndexPath(row: posts.count + 1, section: 0)], with: .automatic)
+        
         tableView.endUpdates()
         
     }
     
+   
+    
     var likeCount = 0
     
     func likeClicked(sender:UIButton) {
+        
+        
+        
         likeCount = likeCount + 1
+        
         if(likeCount%2 != 0) {
-       sender.setImage(#imageLiteral(resourceName: "Like Filled-40"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "Like Filled-40"), for: .normal)
+            
+//            query.getObjectInBackground(withId: id, block: {
+//                (updatedObject: PFObject?, error: Error?) -> Void in
+//                if error != nil {
+//                    print("error")
+//                }
+//                else {
+//                    updatedObject?["like"] = true
+//                    updatedObject?.saveInBackground()
+//                }
+//            })
+
+            
+            
         }
         else {
-            sender.setImage(#imageLiteral(resourceName: "Like-40"), for: .normal)
+           sender.setImage(#imageLiteral(resourceName: "Like-40"), for: .normal)
+//            query.getObjectInBackground(withId: id, block: {
+//                (updatedObject: PFObject?, error: Error?) -> Void in
+//                if error != nil {
+//                    print("error")
+//                }
+//                else {
+//                    updatedObject?["like"] = false
+//                    updatedObject?.saveInBackground()
+//                }
+//            })
+
+            
+        
         }
+        
+        
         
     }
     var postcount = 1
@@ -88,9 +173,7 @@ class EventTableViewController: UITableViewController {
         print("post comment clicked")
         print("comment array \(commentArray)")
 //        postcount = postcount + 1
-        
        
-      
         posts.append(postcount)
         tableView.beginUpdates()
        
@@ -100,35 +183,55 @@ class EventTableViewController: UITableViewController {
        
     }
     
+    var row_number:[Int] = []
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         
-        if(indexPath.row == 0) {
-            let post:PFObject = cyclePost[(indexPath as NSIndexPath).row]
+        for post in activityPost {
+            let post:PFObject = activityPost[(indexPath as NSIndexPath).row]
             let cell = CustomCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
         
+        row_number.append(indexPath.row)
         
         cell.postTitle.text = post["title"] as! String!
-        cell.eventTime.text = post["eventDate"] as! String!
+        cell.postDescription.text = post["description"] as! String!
+        
+            //converting date object to string
+            let date:Date = post["eventDate"] as! Date!
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let myString = formatter.string(from: date)
+            let yourDate = formatter.date(from: myString)
+            formatter.dateFormat = "dd-MMM-yyyy HH:mm a"
+            let dateString = formatter.string(from: yourDate!)
+       
+            
+        cell.eventTime.text = dateString
+       
+        
         
         cell.likeButton.addTarget(self, action:#selector(likeClicked(sender:)), for: .touchUpInside)
         cell.replyButton.addTarget(self, action: #selector(replyClicked(sender:)), for: .touchUpInside)
-
+        
+            
         return cell
         }
+       /*
         else if(indexPath.row == 1) {
             let cell = CommentCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
             cell.commentText.text = commentArray[indexPath.row-1]
             return cell
         }
-            
-        else {
+ */
+       
+        
             let cell = PostCommentCell(frame:CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100),title:"")
             commentArray.append(cell.commentText.text!)
             print("comment array inside cell \(commentArray)")
             cell.postCommentButton.addTarget(self, action: #selector(postComment(sender:)), for: .touchUpInside)
             return cell
-        }
+        
+ 
         
     }
     
@@ -142,6 +245,7 @@ class EventTableViewController: UITableViewController {
     class CustomCell: UITableViewCell {
         
         var postTitle: UILabel!
+        var postDescription: UILabel!
         var eventTime: UILabel!
         var notifyButton: UIButton!
         var likeButton: UIButton!
@@ -156,8 +260,12 @@ class EventTableViewController: UITableViewController {
             postTitle = UILabel(frame: CGRect(x: 80 ,y: 10,width: 150 ,height: 20))
             postTitle.textColor = UIColor.blue
             
+            //event description
+            postDescription = UILabel(frame: CGRect(x: 80 ,y: 40,width: 200 ,height: 20))
+            postDescription.textColor = UIColor.black
+            
             //event time label
-            eventTime = UILabel(frame: CGRect(x: 80 ,y: 50,width: 150 ,height: 20))
+            eventTime = UILabel(frame: CGRect(x: 80 ,y: 70,width: 200 ,height: 20))
             eventTime.textColor = UIColor.black
             
             //notify button
@@ -176,6 +284,7 @@ class EventTableViewController: UITableViewController {
            
             
             addSubview(postTitle)
+            addSubview(postDescription)
             addSubview(eventTime)
             addSubview(notifyButton)
             addSubview(likeButton)
@@ -255,9 +364,8 @@ class EventTableViewController: UITableViewController {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
         }
     }
-
-
     
+        
     
     /*
     // Override to support conditional editing of the table view.

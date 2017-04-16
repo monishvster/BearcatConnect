@@ -17,12 +17,12 @@
 		A215AAA41E67B71600A203BF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A215AA9A1E67B71600A203BF /* libz.tbd */; };
 		A215AAA51E67B71600A203BF /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A215AA9B1E67B71600A203BF /* QuartzCore.framework */; };
 		A215AAA61E67B71600A203BF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A215AA9C1E67B71600A203BF /* Security.framework */; };
-		A215AAA71E67B71600A203BF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A215AA9D1E67B71600A203BF /* StoreKit.framework */; };
 		A215AAA81E67B71600A203BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A215AA9E1E67B71600A203BF /* SystemConfiguration.framework */; };
 		A215AAAA1E67BC4900A203BF /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A215AAA91E67BC4900A203BF /* ActivityTableViewController.swift */; };
-		A21F9B141E6E3B5F0091DD88 /* CyclingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F9B131E6E3B5F0091DD88 /* CyclingViewController.swift */; };
+		A21F9B141E6E3B5F0091DD88 /* CreatePostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21F9B131E6E3B5F0091DD88 /* CreatePostController.swift */; };
 		A26BBCE61E6B480D00A5327A /* EventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BBCE51E6B480D00A5327A /* EventTableViewController.swift */; };
 		A26BBCE81E6B59CA00A5327A /* eventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26BBCE71E6B59CA00A5327A /* eventTableViewCell.swift */; };
+		A285305E1EA3F68400632A54 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A285305D1EA3F68400632A54 /* ActivityModel.swift */; };
 		A29FD6751E85BC2700EE3F5C /* eventsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29FD6741E85BC2700EE3F5C /* eventsTableViewCell.swift */; };
 		A29FD6771E85BCA200EE3F5C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29FD6761E85BCA200EE3F5C /* SignupViewController.swift */; };
 		A2A41B781E6512F6008B4EC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2A41B771E6512F6008B4EC0 /* AppDelegate.swift */; };
@@ -46,9 +46,10 @@
 		A215AA9D1E67B71600A203BF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A215AA9E1E67B71600A203BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A215AAA91E67BC4900A203BF /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
-		A21F9B131E6E3B5F0091DD88 /* CyclingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CyclingViewController.swift; sourceTree = "<group>"; };
+		A21F9B131E6E3B5F0091DD88 /* CreatePostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePostController.swift; sourceTree = "<group>"; };
 		A26BBCE51E6B480D00A5327A /* EventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventTableViewController.swift; path = ../EventTableViewController.swift; sourceTree = "<group>"; };
 		A26BBCE71E6B59CA00A5327A /* eventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventTableViewCell.swift; sourceTree = "<group>"; };
+		A285305D1EA3F68400632A54 /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		A29FD6741E85BC2700EE3F5C /* eventsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eventsTableViewCell.swift; sourceTree = "<group>"; };
 		A29FD6761E85BCA200EE3F5C /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A2A41B741E6512F6008B4EC0 /* bearcatconnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bearcatconnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +74,6 @@
 				A215AAA41E67B71600A203BF /* libz.tbd in Frameworks */,
 				A215AAA51E67B71600A203BF /* QuartzCore.framework in Frameworks */,
 				A215AAA61E67B71600A203BF /* Security.framework in Frameworks */,
-				A215AAA71E67B71600A203BF /* StoreKit.framework in Frameworks */,
 				A215AAA81E67B71600A203BF /* SystemConfiguration.framework in Frameworks */,
 				A215AA931E67B68F00A203BF /* Parse.framework in Frameworks */,
 				A215AA921E67B68F00A203BF /* Bolts.framework in Frameworks */,
@@ -137,11 +137,12 @@
 				A29FD6761E85BCA200EE3F5C /* SignupViewController.swift */,
 				A26BBCE71E6B59CA00A5327A /* eventTableViewCell.swift */,
 				A215AAA91E67BC4900A203BF /* ActivityTableViewController.swift */,
+				A285305D1EA3F68400632A54 /* ActivityModel.swift */,
 				A2A41B7E1E6512F6008B4EC0 /* Assets.xcassets */,
 				A215AA8F1E67B62100A203BF /* Frameworks */,
 				A2A41B801E6512F6008B4EC0 /* LaunchScreen.storyboard */,
 				A2A41B831E6512F6008B4EC0 /* Info.plist */,
-				A21F9B131E6E3B5F0091DD88 /* CyclingViewController.swift */,
+				A21F9B131E6E3B5F0091DD88 /* CreatePostController.swift */,
 			);
 			path = bearcatconnect;
 			sourceTree = "<group>";
@@ -178,6 +179,7 @@
 				TargetAttributes = {
 					A2A41B731E6512F6008B4EC0 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = AHPBCQML3R;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -220,11 +222,12 @@
 			files = (
 				A29FD6751E85BC2700EE3F5C /* eventsTableViewCell.swift in Sources */,
 				A29FD6771E85BCA200EE3F5C /* SignupViewController.swift in Sources */,
+				A285305E1EA3F68400632A54 /* ActivityModel.swift in Sources */,
 				A26BBCE81E6B59CA00A5327A /* eventTableViewCell.swift in Sources */,
 				A2A41B781E6512F6008B4EC0 /* AppDelegate.swift in Sources */,
 				A2EEE8901E919D7F00F1472E /* LoginViewController.swift in Sources */,
 				A26BBCE61E6B480D00A5327A /* EventTableViewController.swift in Sources */,
-				A21F9B141E6E3B5F0091DD88 /* CyclingViewController.swift in Sources */,
+				A21F9B141E6E3B5F0091DD88 /* CreatePostController.swift in Sources */,
 				A215AAAA1E67BC4900A203BF /* ActivityTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,7 +275,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: monishwildguy@gmail.com (258545P6WF)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -322,7 +325,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: monishwildguy@gmail.com (258545P6WF)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -348,15 +351,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: monishwildguy@gmail.com (258545P6WF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AHPBCQML3R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Parse-iOS",
 				);
 				INFOPLIST_FILE = bearcatconnect/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nwmissouri.bearcatconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -364,15 +372,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: monishwildguy@gmail.com (258545P6WF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = AHPBCQML3R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Parse-iOS",
 				);
 				INFOPLIST_FILE = bearcatconnect/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nwmissouri.bearcatconnect;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

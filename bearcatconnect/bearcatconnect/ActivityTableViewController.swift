@@ -14,13 +14,17 @@ class ActivityTableViewController: UITableViewController {
 
     var activityName:[String]!
     var activityImages:[UIImage]!
-    
+    var activityModel:ActivityModel!
     
     
     @IBOutlet var activityView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //initialize model
+        activityModel = (UIApplication.shared.delegate as! AppDelegate).activityModel
+        
         activityView.delegate = self
         activityView.dataSource = self
         activityName = ["Cycling","Trekking","Literature","Music","Mathematics","Programming","Photography"]
@@ -57,9 +61,7 @@ class ActivityTableViewController: UITableViewController {
         
     }
     
-    @IBAction func next(_ sender: Any) {
-        self.performSegue(withIdentifier: "nextView", sender: self)
-    }
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -90,21 +92,15 @@ class ActivityTableViewController: UITableViewController {
         return cell
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let cell = tableView.cellForRow(at: indexPath)
+        let selectedRow = activityName[indexPath.row]
+        activityModel.activity = selectedRow
         
-        if (cell?.accessoryType == UITableViewCellAccessoryType.checkmark){
-            
-            cell!.accessoryType = UITableViewCellAccessoryType.none;
-            
-        }else{
-            
-            cell!.accessoryType = UITableViewCellAccessoryType.checkmark;
-            
-        }
         
     }
+ 
 
     /*
     // Override to support conditional editing of the table view.
