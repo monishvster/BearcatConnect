@@ -10,9 +10,13 @@ import Foundation
 
 class ActivityModel {
     
+    var notifyDate:Date
     var activity:String
+    var postTitle:String
     
-    init(activity:String) {
+    init(activity:String,notifyDate:Date,postTitle:String) {
         self.activity = activity
+        self.notifyDate = notifyDate
+        self.postTitle = postTitle
     }
 }

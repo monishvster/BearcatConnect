@@ -8,16 +8,18 @@
 import Parse
 import Bolts
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    
     var window: UIWindow?
     var activityModel:ActivityModel!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //Initialize Model
-        activityModel = ActivityModel(activity: "")
+        activityModel = ActivityModel(activity: "", notifyDate: Date(),postTitle:"")
         
         // Initialize Parse.
         let configuration = ParseClientConfiguration {
@@ -30,7 +32,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initialize(with: configuration)
         
         //implementing notifications
+        
         application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
+        
+        
         return true
     }
 

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import UserNotifications
 
 class EventTableViewController: UITableViewController {
     
@@ -119,7 +120,35 @@ class EventTableViewController: UITableViewController {
         tableView.endUpdates()
         
     }
+    var notifyDate:Date! = Date()
     
+    var notifyCount = 0
+    func notifyClicked(sender:UIButton) {
+        print("notify clicked")
+        notifyCount = notifyCount + 1
+        if notifyCount%2 != 0 {
+            let originalDate = activityModel.notifyDate
+            let calendar = Calendar.current
+            let newd = calendar.date(byAdding: .hour, value: -5, to: originalDate, wrappingComponents: false)
+            
+            
+            print("notification date here \(newd)")
+            sender.setImage(#imageLiteral(resourceName: "Bell Filled-40"), for: .normal)
+            let notification = UILocalNotification()
+            notification.alertBody = activityModel.postTitle // text that will be displayed in the notification
+            notification.alertAction = "open" // text that is displayed after "slide to..." on the lock screen - defaults to "slide to view"
+            notification.fireDate = newd!  // todo item due date (when notification will be fired)
+           // notification.soundName = UILocalNotificationDefaultSoundName // play default sound
+           // notification.userInfo = ["title": item.title, "UUID": item.UUID] // assign a unique identifier to the notification so that we can retrieve it later
+            
+            UIApplication.shared.scheduleLocalNotification(notification)
+        }
+        else {
+            sender.setImage(#imageLiteral(resourceName: "Bell-40"), for: .normal)
+        }
+        
+        
+    }
    
     
     var likeCount = 0
@@ -194,15 +223,20 @@ class EventTableViewController: UITableViewController {
         row_number.append(indexPath.row)
         
         cell.postTitle.text = post["title"] as! String!
+        activityModel.postTitle = post["title"] as! String!
         cell.postDescription.text = post["description"] as! String!
         
             //converting date object to string
             let date:Date = post["eventDate"] as! Date!
+            
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let myString = formatter.string(from: date)
+            
             let yourDate = formatter.date(from: myString)
             formatter.dateFormat = "dd-MMM-yyyy HH:mm a"
+            formatter.timeZone = TimeZone.current
+            activityModel.notifyDate = yourDate!
             let dateString = formatter.string(from: yourDate!)
        
             
@@ -211,8 +245,8 @@ class EventTableViewController: UITableViewController {
         
         
         cell.likeButton.addTarget(self, action:#selector(likeClicked(sender:)), for: .touchUpInside)
-        cell.replyButton.addTarget(self, action: #selector(replyClicked(sender:)), for: .touchUpInside)
-        
+       // cell.replyButton.addTarget(self, action: #selector(replyClicked(sender:)), for: .touchUpInside)
+        cell.notifyButton.addTarget(self, action: #selector(notifyClicked(sender:)), for: .touchUpInside)
             
         return cell
         }

@@ -20,6 +20,7 @@ class CreatePostController: UIViewController {
         super.viewDidLoad()
         
         activityModel = (UIApplication.shared.delegate as! AppDelegate).activityModel
+        
         print("selected row here \(activityModel.activity)")
         if activityModel.activity == "Cycling" {
             selectedActivity = "CyclingPost"
@@ -77,6 +78,7 @@ class CreatePostController: UIViewController {
        
         createPost["title"] = titleTXT.text!
         createPost["eventDate"] = datePicker.date
+        
         let date = datePicker.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd hh:mm a"

@@ -29,6 +29,7 @@
 		A2A41B7D1E6512F6008B4EC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A41B7B1E6512F6008B4EC0 /* Main.storyboard */; };
 		A2A41B7F1E6512F6008B4EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2A41B7E1E6512F6008B4EC0 /* Assets.xcassets */; };
 		A2A41B821E6512F6008B4EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2A41B801E6512F6008B4EC0 /* LaunchScreen.storyboard */; };
+		A2B4B4271EA4652100FC627F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B4B4261EA4652100FC627F /* UserNotifications.framework */; };
 		A2EEE8901E919D7F00F1472E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2EEE88F1E919D7F00F1472E /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		A2A41B7E1E6512F6008B4EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2A41B811E6512F6008B4EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2A41B831E6512F6008B4EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2B4B4261EA4652100FC627F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		A2EEE88F1E919D7F00F1472E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2B4B4271EA4652100FC627F /* UserNotifications.framework in Frameworks */,
 				A215AA9F1E67B71600A203BF /* AudioToolbox.framework in Frameworks */,
 				A215AAA01E67B71600A203BF /* CFNetwork.framework in Frameworks */,
 				A215AAA11E67B71600A203BF /* CoreGraphics.framework in Frameworks */,
@@ -95,6 +98,7 @@
 		A215AA941E67B71600A203BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A2B4B4261EA4652100FC627F /* UserNotifications.framework */,
 				A215AA951E67B71600A203BF /* AudioToolbox.framework */,
 				A215AA961E67B71600A203BF /* CFNetwork.framework */,
 				A215AA971E67B71600A203BF /* CoreGraphics.framework */,
