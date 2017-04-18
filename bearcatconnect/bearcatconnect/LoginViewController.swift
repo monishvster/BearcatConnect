@@ -8,7 +8,7 @@
 import Parse
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UITextFieldDelegate {
 
     
     override func viewDidLoad() {
@@ -16,12 +16,17 @@ class LoginViewController: UIViewController {
                // Do any additional setup after loading the view, typically from a nib.
         usernameTXT.autocorrectionType = .no
         passwordTXT.autocorrectionType = .no
+        self.usernameTXT.delegate = self
+        self.passwordTXT.delegate = self
         
     }
     @IBOutlet weak var usernameTXT: UITextField!
     @IBOutlet weak var passwordTXT: UITextField!
     
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
     
     @IBAction func signIN(_ sender: Any) {
         

@@ -10,12 +10,22 @@ import UIKit
 import Parse
 import Bolts
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController,UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        self.username.delegate = self
+        self.firstname.delegate = self
+        self.lastname.delegate = self
+        self.password.delegate = self
+        self.confirm.delegate = self
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 
     override func didReceiveMemoryWarning() {

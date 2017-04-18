@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 
-class CreatePostController: UIViewController {
+class CreatePostController: UIViewController, UITextFieldDelegate {
     
     var createPost:PFObject! = nil
     var activityModel:ActivityModel!
@@ -18,6 +18,14 @@ class CreatePostController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.titleTXT.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreatePostController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+        
         
         activityModel = (UIApplication.shared.delegate as! AppDelegate).activityModel
         
@@ -54,6 +62,19 @@ class CreatePostController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var titleTXT: UITextField!
