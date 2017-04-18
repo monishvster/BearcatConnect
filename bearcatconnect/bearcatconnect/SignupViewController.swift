@@ -40,13 +40,28 @@ class SignupViewController: UIViewController {
             
             user.setValue(fname, forKey: "fname")
             user.setValue(lname, forKey: "lname")
+            
+            if username.text == "" || fname == "" || lname == "" || password.text == "" || confirm.text == "" {
+                let refreshAlert = UIAlertController(title: "Error  ", message: "Please enter the fields", preferredStyle: UIAlertControllerStyle.alert)
+                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                    
+                }))
+                self.present(refreshAlert, animated: true, completion: nil)
+            }
+            else {
+            
+            
+            
             user.signUpInBackground(block: { (success, error) -> Void in
             })
+            
             errorLabel.text = ""
             self.dismiss(animated: true, completion: {})
+            }
         }
         else {
             errorLabel.text = "Passwords do not match"
+            errorLabel.textColor = UIColor.red
             confirm.text = ""
             password.text = ""
         }

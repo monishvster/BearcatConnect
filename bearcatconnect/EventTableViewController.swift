@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import UserNotifications
 
-class EventTableViewController: UITableViewController {
+class EventTableViewController: UITableViewController, UNUserNotificationCenterDelegate {
     
    
     var query:PFQuery! = nil
@@ -29,6 +29,9 @@ class EventTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        
+        
         //initialize model
         activityModel = (UIApplication.shared.delegate as! AppDelegate).activityModel
         if activityModel.activity == "Cycling" {
@@ -129,19 +132,11 @@ class EventTableViewController: UITableViewController {
         if notifyCount%2 != 0 {
             let originalDate = activityModel.notifyDate
             let calendar = Calendar.current
-            let newd = calendar.date(byAdding: .hour, value: -5, to: originalDate, wrappingComponents: false)
-            
-            
-            print("notification date here \(newd)")
+            let reducingMinute = calendar.date(byAdding: .minute, value: -15, to: originalDate, wrappingComponents: false)
+           
             sender.setImage(#imageLiteral(resourceName: "Bell Filled-40"), for: .normal)
-            let notification = UILocalNotification()
-            notification.alertBody = activityModel.postTitle // text that will be displayed in the notification
-            notification.alertAction = "open" // text that is displayed after "slide to..." on the lock screen - defaults to "slide to view"
-            notification.fireDate = newd!  // todo item due date (when notification will be fired)
-           // notification.soundName = UILocalNotificationDefaultSoundName // play default sound
-           // notification.userInfo = ["title": item.title, "UUID": item.UUID] // assign a unique identifier to the notification so that we can retrieve it later
+            scheduleNotification(at: reducingMinute!)
             
-            UIApplication.shared.scheduleLocalNotification(notification)
         }
         else {
             sender.setImage(#imageLiteral(resourceName: "Bell-40"), for: .normal)
@@ -150,6 +145,27 @@ class EventTableViewController: UITableViewController {
         
     }
    
+    func scheduleNotification(at date: Date) {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents(in: .current, from: date)
+        let newComponents = DateComponents(month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+        
+        let content = UNMutableNotificationContent()
+        content.title = activityModel.postTitle
+        content.body = "Hurry Up!"
+        content.sound = UNNotificationSound.default()
+        
+        let request = UNNotificationRequest(identifier: "textNotification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().add(request) {(error) in
+            if let error = error {
+                print("Uh oh! We had an error: \(error)")
+            }
+        }
+    }
     
     var likeCount = 0
     

@@ -11,9 +11,9 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
-    
+    var isGrantedNotificationAccess:Bool = false
     var window: UIWindow?
     var activityModel:ActivityModel!
 
@@ -30,13 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.enableLocalDatastore()
         Parse.initialize(with: configuration)
+         //get authorization for notification
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: [.alert,.sound,.badge],
+            completionHandler: {(granted,error) in
+              self.isGrantedNotificationAccess = granted
+        })
         
-        //implementing notifications
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil))
-        
-        
-        return true
+       return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
