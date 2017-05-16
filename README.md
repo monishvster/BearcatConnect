@@ -1,12 +1,10 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
 iOS Spring 2017 project
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+
+Students can join their interest groups and see the event posts related to that groups. Some of the groups are Cycling, Music, Literature etc. Students can also create new events and set the notifications for their events, also others can view the comments on the post and add their own comments on the post.
 
 ### How do I get set up? ###
 
@@ -18,18 +16,16 @@ Password: M@verma16
 applicationId = DWxHcXjfhaf8ktS0eVuyxxEMCZmLu5rZ3dPO820a  
 clientKey = nKHdQ6r5zOsK0khIzDTbY1dBL5aUDXezNUsCTIqa  
 server = https://parseapi.back4app.com  
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+
 
 ### Contribution guidelines ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* Future enhancements
+Reply on the posts
+Add map of the location of the event
+Add Admin view
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* Repo owner
+monish.vster@gmail.com
